@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/adote-quatropatas/cliente")
+@RequestMapping("/adote-quatropatas/tutor")
 public class TutorController {
 
     private final TutorRegister tutorRegister;
