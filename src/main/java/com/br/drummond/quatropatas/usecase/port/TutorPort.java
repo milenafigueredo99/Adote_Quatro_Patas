@@ -6,4 +6,5 @@ public interface TutorPort {
 
     void register(Tutor tutor);
 
+    void findTutorByCpf(String cpf);
 }

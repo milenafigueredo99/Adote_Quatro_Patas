@@ -7,11 +7,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class TutorRegister {
+public class TutorRegisterUseCase {
 
     private final TutorPort tutorPort;
 
     public void registration(Tutor tutor){
+        tutorPort.findTutorByCpf(tutor.getCpf());
         tutorPort.register(tutor);
     }
 }
