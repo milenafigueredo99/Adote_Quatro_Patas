@@ -1,4 +1,4 @@
-package com.br.drummond.quatropatas.adapter.repository;
+package com.br.drummond.quatropatas.adapter.controller;
 
 import com.br.drummond.quatropatas.adapter.controller.dto.ErrorDto;
 import com.br.drummond.quatropatas.adapter.controller.dto.ResponseErrorDto;
