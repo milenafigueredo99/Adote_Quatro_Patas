@@ -2,6 +2,7 @@ package com.br.drummond.quatropatas.usecase;
 
 import com.br.drummond.quatropatas.domain.Pet;
 import com.br.drummond.quatropatas.usecase.port.PetPort;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
