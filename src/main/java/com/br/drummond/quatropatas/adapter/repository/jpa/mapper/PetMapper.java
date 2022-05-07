@@ -19,7 +19,7 @@ public class PetMapper {
                 .size(pet.getSize())
                 .weight(pet.getWeight())
                 .address(pet.getAddress())
-                .deficiency(pet.isDeficiency())
+                .deficiency(pet.getDeficiency())
                 .build();
     }
 
@@ -32,7 +32,7 @@ public class PetMapper {
                 .size(pet.getSize())
                 .weight(pet.getWeight())
                 .address(pet.getAddress())
-                .deficiency(pet.isDeficiency())
+                .deficiency(pet.getDeficiency())
                 .build();
     }
 

@@ -14,7 +14,7 @@ public class PetResponse {
     private String name;
 
     @JsonProperty("idade")
-    private String age;
+    private int age;
 
     @JsonProperty("especie")
     private String species;
@@ -26,7 +26,7 @@ public class PetResponse {
     private String size;
 
     @JsonProperty("peso")
-    private String weight;
+    private double weight;
 
     @JsonProperty("endereco")
     private String address;

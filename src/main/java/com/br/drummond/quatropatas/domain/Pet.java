@@ -1,5 +1,6 @@
 package com.br.drummond.quatropatas.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -8,11 +9,11 @@ import lombok.Getter;
 public class Pet {
 
     private String name;
-    private String age;
+    private int age;
     private String species;
     private String gender;
     private String size;
-    private String weight;
+    private double weight;
     private String address;
-    private boolean deficiency;
+    private String deficiency;
 }
