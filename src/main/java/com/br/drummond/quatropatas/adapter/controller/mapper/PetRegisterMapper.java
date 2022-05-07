@@ -20,7 +20,7 @@ public class PetRegisterMapper {
                 .size(input.getSize())
                 .weight(input.getWeight())
                 .address(input.getAddress())
-                .deficiency(deficiencyInput(input.getDeficiency()))
+                .deficiency(input.getDeficiency())
                 .build();
     }
 
@@ -33,7 +33,7 @@ public class PetRegisterMapper {
                 .size(pet.getSize())
                 .weight(pet.getWeight())
                 .address(pet.getAddress())
-                .deficiency(deficiencyResponse(pet.isDeficiency()))
+                .deficiency(pet.getDeficiency())
                 .build();
     }
 
@@ -41,17 +41,4 @@ public class PetRegisterMapper {
         return pets.stream().map(this::toResponse).collect(Collectors.toList());
     }
 
-    public boolean deficiencyInput(String deficiency){
-        if(deficiency.equalsIgnoreCase("nao")){
-            return false;
-        }
-        return deficiency.equalsIgnoreCase("sim");
-    }
-
-    public String deficiencyResponse(boolean deficiency){
-        if(!deficiency){
-            return "não";
-        }
-        return "sim";
-    }
 }
