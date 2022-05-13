@@ -1,14 +1,12 @@
 package com.br.drummond.quatropatas.adapter.repository.jpa.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +14,12 @@ import javax.persistence.*;
 public class PetEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "id_exteno")
+    private String externalId;
 
     @Column(name ="nome")
     private String name;
@@ -43,5 +44,8 @@ public class PetEntity {
 
     @Column(name ="deficiencia")
     private String deficiency;
+
+    @Column(name ="adotado")
+    private boolean adopted;
 
 }

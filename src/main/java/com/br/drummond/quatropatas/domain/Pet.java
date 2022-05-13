@@ -1,13 +1,15 @@
 package com.br.drummond.quatropatas.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
-@Builder
+@Setter
+@Builder(toBuilder = true)
 public class Pet {
 
+    private String externalId;
     private String name;
     private int age;
     private String species;

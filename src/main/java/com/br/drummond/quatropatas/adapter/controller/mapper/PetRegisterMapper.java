@@ -26,6 +26,7 @@ public class PetRegisterMapper {
 
     public PetResponse toResponse(Pet pet) {
         return PetResponse.builder()
+                .externalId(pet.getExternalId())
                 .name(pet.getName())
                 .age(pet.getAge())
                 .species(pet.getSpecies())
