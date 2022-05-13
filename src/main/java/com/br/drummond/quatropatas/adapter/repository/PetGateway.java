@@ -6,6 +6,7 @@ import com.br.drummond.quatropatas.domain.Pet;
 import com.br.drummond.quatropatas.usecase.port.PetPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +26,13 @@ public class PetGateway implements PetPort {
 
     @Override
     public List<Pet> findAllPets() {
-       return petRepository.findAll().stream().map(petMapper::toDomain).collect(Collectors.toList());
+        return petRepository.findAll().stream().map(petMapper::toDomain).collect(Collectors.toList());
     }
+
+    @Override
+    @Transactional
+    public void deletePetByExternalId(String externalId) {
+        petRepository.deleteByExternalId(externalId);
+    }
+
 }

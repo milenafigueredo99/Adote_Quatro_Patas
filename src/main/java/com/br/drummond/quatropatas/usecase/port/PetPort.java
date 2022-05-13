@@ -8,5 +8,5 @@ public interface PetPort {
 
     void register(Pet pet);
     List<Pet> findAllPets();
-
+    void deletePetByExternalId(String externalId);
 }

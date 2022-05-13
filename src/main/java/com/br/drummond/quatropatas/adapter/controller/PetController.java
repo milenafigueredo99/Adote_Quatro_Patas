@@ -33,4 +33,10 @@ public class PetController {
         petUseCase.registration(pet);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @DeleteMapping
+    private ResponseEntity<?> petRegister(@RequestParam(name = "id_externo") String externalId) {
+        petUseCase.deleteRegister(externalId);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }

@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "c2e457d5-f8d9-49f9-a014-1cdd96d2c91b",
+		"name": "Adote Quatro Patas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pet",
+			"item": [
+				{
+					"name": "Exibe todos os pets",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"teste\",\r\n    \"age\":\"teste\",\r\n    \"species\":\"teste\",\r\n    \"gender\":\"teste\",\r\n    \"size\":\"teste\",\r\n    \"weight\":\"teste\",\r\n    \"address\":\"teste\",\r\n    \"deficiency\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/adote-quatropatas/pet",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adote-quatropatas",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apaga registro pet",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/adote-quatropatas/pet?id=f8317fed-bd67-45c4-a9cd-df682481822b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adote-quatropatas",
+								"pet"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "f8317fed-bd67-45c4-a9cd-df682481822b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra Pet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"Fred\",\r\n    \"idade\": 5,\r\n    \"especie\":\"cachorro\",\r\n    \"genero\":\"Macho\",\r\n    \"porte\":\"Medio\",\r\n    \"peso\":30,\r\n    \"endereco\":\"São Paulo\",\r\n    \"deficiencia\":\"nao\",\r\n    \"id_externo\":\"56\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/adote-quatropatas/pet",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adote-quatropatas",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tutor",
+			"item": [
+				{
+					"name": "Cadastra tutor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"teste\",\r\n    \"cpf\":\"teste\",\r\n    \"address\":\"teste\",\r\n    \"email\":\"teste\",\r\n    \"telephone\":\"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/adote-quatropatas/tutor",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adote-quatropatas",
+								"tutor"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

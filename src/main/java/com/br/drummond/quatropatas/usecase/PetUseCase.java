@@ -24,4 +24,8 @@ public class PetUseCase {
     public List<Pet> getAllPets() {
         return petPort.findAllPets();
     }
+
+    public void deleteRegister(String externalId) {
+        petPort.deletePetByExternalId(externalId);
+    }
 }
