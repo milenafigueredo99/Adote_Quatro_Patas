@@ -10,6 +10,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public class PetResponse {
 
+    @JsonProperty("id")
+    private String externalId;
+
     @JsonProperty("nome")
     private String name;
 
