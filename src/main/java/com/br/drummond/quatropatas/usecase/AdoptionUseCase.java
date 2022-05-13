@@ -15,8 +15,6 @@ public class AdoptionUseCase {
     public void adoptPet(String externalId) {
         if (!adoptionPort.isAdoptedPet(externalId)) {
             adoptionPort.adocao(externalId);
-
-            List.of()
         }
         throw new AdoptedPetException("Pet adotado");
     }
