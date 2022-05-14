@@ -28,4 +28,8 @@ public class PetUseCase {
     public void deleteRegister(String externalId) {
         petPort.deletePetByExternalId(externalId);
     }
+
+    public void updateRegister(String externalId, Pet pet) {
+        petPort.updatePet(externalId, pet);
+    }
 }

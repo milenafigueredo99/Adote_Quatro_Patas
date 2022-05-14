@@ -39,4 +39,11 @@ public class PetController {
         petUseCase.deleteRegister(externalId);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+    @PutMapping
+    private ResponseEntity<?> updatePet(@Valid @RequestBody PetInput input, @RequestParam("id_externo") String externalId) {
+        var pet = petRegisterMapper.toDomain(input);
+        petUseCase.updateRegister(externalId, pet);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }

@@ -19,7 +19,8 @@ public class PetMapper {
                 .gender(pet.getGender())
                 .size(pet.getSize())
                 .weight(pet.getWeight())
-                .address(pet.getAddress())
+                .city(pet.getCity())
+                .state(pet.getState())
                 .deficiency(pet.getDeficiency())
                 .build();
     }
@@ -33,7 +34,8 @@ public class PetMapper {
                 .gender(pet.getGender())
                 .size(pet.getSize())
                 .weight(pet.getWeight())
-                .address(pet.getAddress())
+                .city(pet.getCity())
+                .state(pet.getState())
                 .deficiency(pet.getDeficiency())
                 .build();
     }
@@ -41,4 +43,19 @@ public class PetMapper {
     public List<Pet> toDomain(List<PetEntity> pets) {
         return pets.stream().map(this::toDomain).collect(Collectors.toList());
     }
+
+    public PetEntity teste(Pet pet, PetEntity petEntity) {
+        return petEntity.toBuilder()
+                .name(pet.getName())
+                .age(pet.getAge())
+                .species(pet.getSpecies())
+                .gender(pet.getGender())
+                .size(pet.getSize())
+                .weight(pet.getWeight())
+                .city(pet.getCity())
+                .state(pet.getState())
+                .deficiency(pet.getDeficiency())
+                .build();
+    }
+
 }
