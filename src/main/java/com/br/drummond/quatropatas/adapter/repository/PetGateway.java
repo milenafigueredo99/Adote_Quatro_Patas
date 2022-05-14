@@ -35,4 +35,11 @@ public class PetGateway implements PetPort {
         petRepository.deleteByExternalId(externalId);
     }
 
+    @Override
+    public void updatePet(String externalId, Pet pet) {
+        var petDb = petRepository.getPet(externalId).get();
+        var updatedPet =  petMapper.teste(pet, petDb);
+        petRepository.save(updatedPet);
+    }
+
 }

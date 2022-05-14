@@ -16,6 +16,7 @@ public class Pet {
     private String gender;
     private String size;
     private double weight;
-    private String address;
+    private String city;
+    private String state;
     private String deficiency;
 }

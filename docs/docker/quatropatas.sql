@@ -11,9 +11,10 @@ use quatropatas;
   `genero` VARCHAR(45) NULL,
   `peso` double NULL,
   `porte` VARCHAR(45) NULL,
-  `endereco` VARCHAR(45) NULL,
+  `cidade` VARCHAR(45) NULL,
+  `estado` VARCHAR(45) NULL,
   `deficiencia` VARCHAR(3) NULL,
-  `adotado` BIT,
+  `adotado` boolean,
   PRIMARY KEY (`id`));
   
    CREATE TABLE `tutor` (

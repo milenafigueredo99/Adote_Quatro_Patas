@@ -9,6 +9,34 @@
 			"name": "Pet",
 			"item": [
 				{
+					"name": "Cadastra Pet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"Fred\",\r\n    \"idade\": 5,\r\n    \"especie\":\"cachorro\",\r\n    \"genero\":\"Macho\",\r\n    \"porte\":\"Medio\",\r\n    \"peso\":30,\r\n    \"cidade\" : \"São Paulo\",\r\n    \"estado\":\"São Paulo\",\r\n    \"deficiencia\":\"não\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/adote-quatropatas/pet",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adote-quatropatas",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Exibe todos os pets",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -67,13 +95,13 @@
 					"response": []
 				},
 				{
-					"name": "Cadastra Pet",
+					"name": "Edita registro Pet",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\":\"Fred\",\r\n    \"idade\": 5,\r\n    \"especie\":\"cachorro\",\r\n    \"genero\":\"Macho\",\r\n    \"porte\":\"Medio\",\r\n    \"peso\":30,\r\n    \"endereco\":\"São Paulo\",\r\n    \"deficiencia\":\"nao\",\r\n    \"id_externo\":\"56\"\r\n}",
+							"raw": "{\r\n    \"nome\":\"Fred\",\r\n    \"idade\": 5,\r\n    \"especie\":\"cachorro\",\r\n    \"genero\":\"Macho\",\r\n    \"porte\":\"Medio\",\r\n    \"peso\":30,\r\n    \"cidade\" : \"São Paulo\",\r\n    \"estado\":\"São Paulo\",\r\n    \"deficiencia\":\"não\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -81,7 +109,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/adote-quatropatas/pet",
+							"raw": "localhost:8080/adote-quatropatas/pet?id_externo=522dd848-8826-4707-8da1-c7632d8d7086",
 							"host": [
 								"localhost"
 							],
@@ -89,6 +117,12 @@
 							"path": [
 								"adote-quatropatas",
 								"pet"
+							],
+							"query": [
+								{
+									"key": "id_externo",
+									"value": "522dd848-8826-4707-8da1-c7632d8d7086"
+								}
 							]
 						}
 					},

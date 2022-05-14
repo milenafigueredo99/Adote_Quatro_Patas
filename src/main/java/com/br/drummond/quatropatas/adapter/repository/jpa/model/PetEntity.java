@@ -7,10 +7,10 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "pet")
+@Builder(toBuilder = true)
 public class PetEntity {
 
     @Id
@@ -39,8 +39,11 @@ public class PetEntity {
     @Column(name ="peso")
     private double weight;
 
-    @Column(name ="endereco")
-    private String address;
+    @Column(name ="estado")
+    private String state;
+
+    @Column(name ="cidade")
+    private String city;
 
     @Column(name ="deficiencia")
     private String deficiency;

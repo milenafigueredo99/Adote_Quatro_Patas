@@ -19,7 +19,8 @@ public class PetRegisterMapper {
                 .gender(input.getGender())
                 .size(input.getSize())
                 .weight(input.getWeight())
-                .address(input.getAddress())
+                .city(input.getCity())
+                .state(input.getState())
                 .deficiency(input.getDeficiency())
                 .build();
     }
@@ -33,7 +34,8 @@ public class PetRegisterMapper {
                 .gender(pet.getGender())
                 .size(pet.getSize())
                 .weight(pet.getWeight())
-                .address(pet.getAddress())
+                .city(pet.getCity())
+                .state(pet.getState())
                 .deficiency(pet.getDeficiency())
                 .build();
     }
