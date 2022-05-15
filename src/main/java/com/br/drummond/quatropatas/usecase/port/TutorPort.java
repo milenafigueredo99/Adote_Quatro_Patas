@@ -11,4 +11,6 @@ public interface TutorPort {
     List<Tutor> getAllTutors();
 
     void updateTutor(Tutor tutor,String cpf);
+
+    void deleteByCpf(String cpf);
 }

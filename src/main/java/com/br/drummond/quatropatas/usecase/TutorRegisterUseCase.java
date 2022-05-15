@@ -25,4 +25,8 @@ public class TutorRegisterUseCase {
     public void updateRegister(String cpf, Tutor tutor) {
         tutorPort.updateTutor(tutor,cpf);
     }
+
+    public void deleteRegister(String cpf) {
+        tutorPort.deleteByCpf(cpf);
+    }
 }

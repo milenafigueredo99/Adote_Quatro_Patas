@@ -42,4 +42,10 @@ public class TutorController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    @DeleteMapping
+    private ResponseEntity<?> tutorDelete(@RequestParam String cpf) {
+        tutorRegisterUseCase.deleteRegister(cpf);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
 }
