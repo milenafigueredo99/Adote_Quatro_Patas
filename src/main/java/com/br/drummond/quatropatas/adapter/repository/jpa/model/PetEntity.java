@@ -7,10 +7,10 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "pet")
-@Builder(toBuilder = true)
 public class PetEntity {
 
     @Id

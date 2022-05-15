@@ -7,6 +7,7 @@ import com.br.drummond.quatropatas.domain.Tutor;
 import com.br.drummond.quatropatas.usecase.port.TutorPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,8 +35,20 @@ public class TutorRegisterGateway implements TutorPort {
 
     @Override
     public List<Tutor> getAllTutors() {
-        var tutors =tutorRepository.findAll();
-        return tutorMapper.toDomain(tutors) ;
+        var tutors = tutorRepository.findAll();
+        return tutorMapper.toDomain(tutors);
     }
 
+    @Override
+    public void updateTutor(Tutor tutor, String cpf) {
+        var tutorDb = tutorRepository.exitsByCpf(cpf).get();
+        var updatedTutor = tutorMapper.toUpdate(tutor, tutorDb);
+        tutorRepository.save(updatedTutor);
+    }
+
+    @Override
+    @Transactional
+    public void deleteByCpf(String cpf) {
+        tutorRepository.deleteByCpf(cpf);
+    }
 }

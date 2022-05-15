@@ -1,43 +1,22 @@
 package com.br.drummond.quatropatas.adapter.controller.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Getter
-@Setter
-@Builder
 @AllArgsConstructor
-public class PetInput {
-
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class TutorUpdateInput {
 
     @NotNull
     @JsonProperty("nome")
     private String name;
-
-    @JsonProperty("idade")
-    private Integer age;
-
-    @NotNull
-    @JsonProperty("especie")
-    private String species;
-
-    @NotNull
-    @JsonProperty("genero")
-    private String gender;
-
-    @NotNull
-    @JsonProperty("porte")
-    private String size;
-
-    @JsonProperty("peso")
-    private Double weight;
 
     @NotNull
     @JsonProperty("cidade")
@@ -48,7 +27,11 @@ public class PetInput {
     private String state;
 
     @NotNull
-    @JsonProperty("deficiencia")
-    private String deficiency;
+    @JsonProperty("email")
+    private String email;
+
+    @NotNull
+    @JsonProperty("telefone")
+    private String telephone;
 
 }
