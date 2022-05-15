@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -26,7 +25,9 @@ public class PetGateway implements PetPort {
 
     @Override
     public List<Pet> findAllPets() {
-        return petRepository.findAll().stream().map(petMapper::toDomain).collect(Collectors.toList());
+        var petsDb = petRepository.findAll();
+
+        return petMapper.toDomain(petsDb);
     }
 
     @Override
@@ -38,7 +39,7 @@ public class PetGateway implements PetPort {
     @Override
     public void updatePet(String externalId, Pet pet) {
         var petDb = petRepository.getPet(externalId).get();
-        var updatedPet =  petMapper.teste(pet, petDb);
+        var updatedPet = petMapper.teste(pet, petDb);
         petRepository.save(updatedPet);
     }
 

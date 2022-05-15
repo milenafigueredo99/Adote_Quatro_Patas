@@ -8,6 +8,8 @@ import com.br.drummond.quatropatas.usecase.port.TutorPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class TutorRegisterGateway implements TutorPort {
@@ -28,6 +30,12 @@ public class TutorRegisterGateway implements TutorPort {
             throw new DuplicateRegistrationException("Já existe um cadastro com esse cpf");
         }
 
+    }
+
+    @Override
+    public List<Tutor> getAllTutors() {
+        var tutors =tutorRepository.findAll();
+        return tutorMapper.toDomain(tutors) ;
     }
 
 }
