@@ -39,7 +39,7 @@ public class PetGateway implements PetPort {
     @Override
     public void updatePet(String externalId, Pet pet) {
         var petDb = petRepository.getPet(externalId).get();
-        var updatedPet = petMapper.teste(pet, petDb);
+        var updatedPet = petMapper.toUpdate(pet, petDb);
         petRepository.save(updatedPet);
     }
 

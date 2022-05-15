@@ -34,8 +34,14 @@ public class TutorRegisterGateway implements TutorPort {
 
     @Override
     public List<Tutor> getAllTutors() {
-        var tutors =tutorRepository.findAll();
-        return tutorMapper.toDomain(tutors) ;
+        var tutors = tutorRepository.findAll();
+        return tutorMapper.toDomain(tutors);
     }
 
+    @Override
+    public void updateTutor(Tutor tutor, String cpf) {
+        var tutorDb = tutorRepository.exitsByCpf(cpf).get();
+        var updatedTutor = tutorMapper.toUpdate(tutor, tutorDb);
+        tutorRepository.save(updatedTutor);
+    }
 }

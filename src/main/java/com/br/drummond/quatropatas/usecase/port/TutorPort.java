@@ -7,8 +7,8 @@ import java.util.List;
 public interface TutorPort {
 
     void register(Tutor tutor);
-
     void findTutorByCpf(String cpf);
-
     List<Tutor> getAllTutors();
+
+    void updateTutor(Tutor tutor,String cpf);
 }

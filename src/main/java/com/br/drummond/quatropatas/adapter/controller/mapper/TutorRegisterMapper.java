@@ -2,6 +2,7 @@ package com.br.drummond.quatropatas.adapter.controller.mapper;
 
 import com.br.drummond.quatropatas.adapter.controller.dto.TutorInput;
 import com.br.drummond.quatropatas.adapter.controller.dto.TutorResponse;
+import com.br.drummond.quatropatas.adapter.controller.dto.TutorUpdateInput;
 import com.br.drummond.quatropatas.domain.Tutor;
 import org.springframework.stereotype.Component;
 
@@ -15,8 +16,19 @@ public class TutorRegisterMapper {
         return Tutor.builder()
                 .name(tutorInput.getName())
                 .cpf(tutorInput.getCpf())
-                .address(tutorInput.getAddress())
-                .email(tutorInput.getAddress())
+                .city(tutorInput.getCity())
+                .state(tutorInput.getState())
+                .email(tutorInput.getEmail())
+                .telephone(tutorInput.getTelephone())
+                .build();
+    }
+
+    public Tutor toDomain(TutorUpdateInput tutorInput) {
+        return Tutor.builder()
+                .name(tutorInput.getName())
+                .city(tutorInput.getCity())
+                .state(tutorInput.getState())
+                .email(tutorInput.getEmail())
                 .telephone(tutorInput.getTelephone())
                 .build();
     }
@@ -24,8 +36,9 @@ public class TutorRegisterMapper {
     public TutorResponse toResponse(Tutor tutor) {
         return TutorResponse.builder()
                 .name(tutor.getName())
-                .address(tutor.getAddress())
-                .email(tutor.getAddress())
+                .city(tutor.getCity())
+                .state(tutor.getState())
+                .email(tutor.getCity())
                 .telephone(tutor.getTelephone())
                 .build();
     }

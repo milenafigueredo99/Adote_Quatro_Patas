@@ -1,15 +1,13 @@
 package com.br.drummond.quatropatas.adapter.repository.jpa.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-@Builder
+@Setter
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "tutor")
@@ -26,14 +24,16 @@ public class TutorEntity {
     @Column(name = "cpf")
     private String cpf;
 
-    @Column(name = "endereco")
-    private String address;
+    @Column(name = "cidade")
+    private String city;
+
+    @Column(name = "estado")
+    private String state;
 
     @Column(name = "email")
     private String email;
 
     @Column(name = "telefone")
     private String telephone;
-
 
 }
