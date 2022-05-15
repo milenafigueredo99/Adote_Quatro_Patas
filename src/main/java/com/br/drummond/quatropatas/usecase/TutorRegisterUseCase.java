@@ -5,6 +5,8 @@ import com.br.drummond.quatropatas.usecase.port.TutorPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TutorRegisterUseCase {
@@ -14,5 +16,9 @@ public class TutorRegisterUseCase {
     public void registration(Tutor tutor){
         tutorPort.findTutorByCpf(tutor.getCpf());
         tutorPort.register(tutor);
+    }
+
+    public List<Tutor> getAllTutors() {
+        return tutorPort.getAllTutors();
     }
 }
