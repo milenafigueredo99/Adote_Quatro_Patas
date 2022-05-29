@@ -21,9 +21,6 @@ public class PetInput {
     @JsonProperty("nome")
     private String name;
 
-    @JsonProperty("id")
-    private String id;
-
     @JsonProperty("idade")
     private Integer age;
 

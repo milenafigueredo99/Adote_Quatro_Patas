@@ -14,7 +14,6 @@ public class PetRegisterMapper {
     public Pet toDomain(PetInput input) {
         return Pet.builder()
                 .name(input.getName())
-                .externalId(input.getId())
                 .age(input.getAge())
                 .species(input.getSpecies())
                 .gender(input.getGender())
