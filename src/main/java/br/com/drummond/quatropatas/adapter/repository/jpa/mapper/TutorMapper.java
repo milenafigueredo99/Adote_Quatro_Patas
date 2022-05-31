@@ -5,7 +5,6 @@ import br.com.drummond.quatropatas.domain.Tutor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
@@ -38,21 +37,12 @@ public class TutorMapper {
 
     public TutorEntity toUpdate(Tutor tutor, TutorEntity tutorEntity) {
 
-        if (!Objects.equals(tutor.getName(), "") || !Objects.equals(tutor.getName(), " ")) {
-            tutorEntity.setName(tutor.getName());
-        }
-        if (!Objects.equals(tutor.getCity(), "") || !Objects.equals(tutor.getCity(), " ")) {
-            tutorEntity.setCity(tutor.getCity());
-        }
-        if (!Objects.equals(tutor.getState(), "") || !Objects.equals(tutor.getState(), " ")) {
-            tutorEntity.setState(tutor.getState());
-        }
-        if (!Objects.equals(tutor.getEmail(), "") || !Objects.equals(tutor.getEmail(), " ")) {
-            tutorEntity.setEmail(tutor.getEmail());
-        }
-        if (!Objects.equals(tutor.getTelephone(), "") || !Objects.equals(tutor.getTelephone(), " ")) {
-            tutorEntity.setTelephone(tutor.getTelephone());
-        }
+        tutorEntity.setName(tutor.getName());
+        tutorEntity.setCity(tutor.getCity());
+        tutorEntity.setState(tutor.getState());
+        tutorEntity.setEmail(tutor.getEmail());
+        tutorEntity.setTelephone(tutor.getTelephone());
+
         return tutorEntity;
     }
 }

@@ -35,6 +35,7 @@ public class TutorRegisterMapper {
 
     public TutorResponse toResponse(Tutor tutor) {
         return TutorResponse.builder()
+                .cpf(tutor.getCpf())
                 .name(tutor.getName())
                 .city(tutor.getCity())
                 .state(tutor.getState())

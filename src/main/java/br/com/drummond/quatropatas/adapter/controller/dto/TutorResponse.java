@@ -10,6 +10,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public class TutorResponse {
 
+    @JsonProperty("cpf")
+    private String cpf;
+
     @JsonProperty("nome")
     private String name;
 
