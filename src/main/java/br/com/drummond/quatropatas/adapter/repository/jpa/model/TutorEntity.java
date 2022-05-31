@@ -3,6 +3,7 @@ package br.com.drummond.quatropatas.adapter.repository.jpa.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -35,5 +36,8 @@ public class TutorEntity {
 
     @Column(name = "telefone")
     private String telephone;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<PetEntity> pets;
 
 }

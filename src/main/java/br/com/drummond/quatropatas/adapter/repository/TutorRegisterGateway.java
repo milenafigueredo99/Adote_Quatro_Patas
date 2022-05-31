@@ -2,14 +2,15 @@ package br.com.drummond.quatropatas.adapter.repository;
 
 import br.com.drummond.quatropatas.adapter.repository.jpa.TutorRepository;
 import br.com.drummond.quatropatas.adapter.repository.jpa.mapper.TutorMapper;
+import br.com.drummond.quatropatas.adapter.repository.jpa.model.TutorEntity;
 import br.com.drummond.quatropatas.usecase.port.TutorPort;
-import br.com.drummond.quatropatas.adapter.controller.exception.DuplicateRegistrationException;
 import br.com.drummond.quatropatas.domain.Tutor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -25,13 +26,10 @@ public class TutorRegisterGateway implements TutorPort {
     }
 
     @Override
-    public void findTutorByCpf(String cpf) {
-
-        if (tutorRepository.exitsByCpf(cpf).isPresent()) {
-            throw new DuplicateRegistrationException("Já existe um cadastro com esse cpf");
-        }
-
+    public Optional<TutorEntity> findTutorByCpf(String cpf) {
+       return tutorRepository.exitsByCpf(cpf);
     }
+
 
     @Override
     public List<Tutor> getAllTutors() {

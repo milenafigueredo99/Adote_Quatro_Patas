@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -20,4 +21,7 @@ public interface PetRepository extends JpaRepository<PetEntity, Long> {
     @Modifying
     @Query("DELETE FROM PetEntity p  WHERE p.externalId = ?1")
     void deleteByExternalId(String externalId);
+
+    @Query("SELECT p FROM PetEntity p  WHERE p.adopted = 0")
+    List<PetEntity> findPetNotAdopted();
 }

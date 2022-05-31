@@ -25,7 +25,7 @@ public class PetGateway implements PetPort {
 
     @Override
     public List<Pet> findAllPets() {
-        var petsDb = petRepository.findAll();
+        var petsDb = petRepository.findPetNotAdopted();
 
         return petMapper.toDomain(petsDb);
     }

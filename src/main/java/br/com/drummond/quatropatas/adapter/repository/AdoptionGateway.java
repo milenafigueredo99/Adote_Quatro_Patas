@@ -1,25 +1,52 @@
 package br.com.drummond.quatropatas.adapter.repository;
 
 import br.com.drummond.quatropatas.adapter.repository.jpa.PetRepository;
+import br.com.drummond.quatropatas.adapter.repository.jpa.TutorRepository;
+import br.com.drummond.quatropatas.adapter.repository.jpa.mapper.PetMapper;
+import br.com.drummond.quatropatas.adapter.repository.jpa.model.PetEntity;
+import br.com.drummond.quatropatas.adapter.repository.jpa.model.TutorEntity;
+import br.com.drummond.quatropatas.domain.Pet;
 import br.com.drummond.quatropatas.usecase.port.AdoptionPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class AdoptionGateway implements AdoptionPort {
 
     private final PetRepository petRepository;
+    private final TutorRepository tutorRepository;
+    private final PetMapper petMapper;
 
-    public boolean isAdoptedPet(String externalId) {
-        return petRepository.existsByExternalId(externalId);
+    @Override
+    public void adoption(String externalId, TutorEntity tutorEntity) {
+        var pet = savePet(externalId, tutorEntity);
+        updateTutor(tutorEntity, pet);
     }
 
     @Override
-    public void adocao(String externalId) {
+    public List<Pet> allAdoptedPetsByCpf(String cpf) {
+        var tutor =  tutorRepository.exitsByCpf(cpf);
+        var petDB= tutor.get().getPets();
+
+        return  petMapper.toDomain(petDB);
+
+    }
+
+    private PetEntity savePet(String externalId, TutorEntity tutorEntity) {
         var pet = petRepository.getPet(externalId).get();
         pet.setAdopted(true);
-
+        pet.setTutor(tutorEntity);
         petRepository.save(pet);
+        return pet;
+    }
+
+    private void updateTutor(TutorEntity tutorEntity, PetEntity pet) {
+        var tutor = tutorEntity.toBuilder()
+                .pets(List.of(pet))
+                .build();
+        tutorRepository.save(tutor);
     }
 }
