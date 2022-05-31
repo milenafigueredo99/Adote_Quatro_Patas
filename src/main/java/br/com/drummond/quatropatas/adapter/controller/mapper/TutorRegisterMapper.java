@@ -15,7 +15,7 @@ public class TutorRegisterMapper {
     public Tutor toDomain(TutorInput tutorInput) {
         return Tutor.builder()
                 .name(tutorInput.getName())
-                .cpf(tutorInput.getCpf())
+                .cpf(tutorInput.getCpf().replaceAll("\\p{Punct}", ""))
                 .city(tutorInput.getCity())
                 .state(tutorInput.getState())
                 .email(tutorInput.getEmail())

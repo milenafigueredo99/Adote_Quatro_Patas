@@ -15,10 +15,10 @@ public class TutorRegisterUseCase {
     private final TutorPort tutorPort;
 
     public void registration(Tutor tutor) {
-        tutorPort.register(tutor);
         if (tutorPort.findTutorByCpf(tutor.getCpf()).isPresent()) {
             throw new DuplicateRegistrationException("Já exite um cadastro com esse cpf");
         }
+        tutorPort.register(tutor);
     }
 
     public List<Tutor> getAllTutors() {
