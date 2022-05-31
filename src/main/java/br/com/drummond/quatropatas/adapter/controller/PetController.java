@@ -29,8 +29,7 @@ public class PetController {
     @GetMapping
     private ResponseEntity<?> findAllPets() {
         var pets = petUseCase.getAllPets();
-        var test = petRegisterMapper.toResponse(pets);
-        return ResponseEntity.status(HttpStatus.OK).body(test);
+        return ResponseEntity.status(HttpStatus.OK).body(petRegisterMapper.toResponse(pets));
     }
 
 

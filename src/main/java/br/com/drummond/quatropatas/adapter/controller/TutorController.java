@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@CrossOrigin
 @RequiredArgsConstructor
 @RequestMapping("/adote-quatropatas/tutor")
 public class TutorController {

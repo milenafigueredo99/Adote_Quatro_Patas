@@ -1,7 +1,12 @@
 package br.com.drummond.quatropatas.usecase.port;
 
-public interface AdoptionPort {
-    boolean isAdoptedPet(String externalId);
+import br.com.drummond.quatropatas.adapter.repository.jpa.model.TutorEntity;
+import br.com.drummond.quatropatas.domain.Pet;
 
-    void adocao(String externalId);
+import java.util.List;
+
+public interface AdoptionPort {
+      void adoption(String externalId, TutorEntity tutor);
+      List<Pet> allAdoptedPetsByCpf(String cpf);
+
 }
