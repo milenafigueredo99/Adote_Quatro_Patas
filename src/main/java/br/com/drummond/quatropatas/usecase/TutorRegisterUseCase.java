@@ -1,7 +1,8 @@
 package br.com.drummond.quatropatas.usecase;
 
-import br.com.drummond.quatropatas.usecase.port.TutorPort;
+import br.com.drummond.quatropatas.adapter.controller.exception.DuplicateRegistrationException;
 import br.com.drummond.quatropatas.domain.Tutor;
+import br.com.drummond.quatropatas.usecase.port.TutorPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +14,11 @@ public class TutorRegisterUseCase {
 
     private final TutorPort tutorPort;
 
-    public void registration(Tutor tutor){
-        tutorPort.findTutorByCpf(tutor.getCpf());
+    public void registration(Tutor tutor) {
         tutorPort.register(tutor);
+        if (tutorPort.findTutorByCpf(tutor.getCpf()).isPresent()) {
+            throw new DuplicateRegistrationException("Já exite um cadastro com esse cpf");
+        }
     }
 
     public List<Tutor> getAllTutors() {
@@ -23,7 +26,7 @@ public class TutorRegisterUseCase {
     }
 
     public void updateRegister(String cpf, Tutor tutor) {
-        tutorPort.updateTutor(tutor,cpf);
+        tutorPort.updateTutor(tutor, cpf);
     }
 
     public void deleteRegister(String cpf) {
