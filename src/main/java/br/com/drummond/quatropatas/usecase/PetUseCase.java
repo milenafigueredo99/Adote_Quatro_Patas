@@ -16,7 +16,7 @@ public class PetUseCase {
 
     public void registration(Pet pet) {
         var petWithExternalId = pet.toBuilder()
-                .externalId(UUID.randomUUID().toString())
+                .externalId(buildExternalId())
                 .build();
         petPort.register(petWithExternalId);
     }
@@ -31,5 +31,9 @@ public class PetUseCase {
 
     public void updateRegister(String externalId, Pet pet) {
         petPort.updatePet(externalId, pet);
+    }
+
+    private String buildExternalId(){
+        return String.valueOf(Integer.valueOf((int) Math.floor(Math.random() * 10 + 1)));
     }
 }
