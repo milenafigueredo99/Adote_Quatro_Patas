@@ -12,7 +12,6 @@ public class PetMapper {
 
     public PetEntity toEntity(Pet pet) {
         return PetEntity.builder()
-                .externalId(pet.getExternalId())
                 .name(pet.getName())
                 .age(pet.getAge())
                 .species(pet.getSpecies())
@@ -27,7 +26,7 @@ public class PetMapper {
 
     public Pet toDomain(PetEntity pet) {
         return Pet.builder()
-                .externalId(pet.getExternalId())
+                .id(String.valueOf(pet.getId()))
                 .name(pet.getName())
                 .age(pet.getAge())
                 .species(pet.getSpecies())

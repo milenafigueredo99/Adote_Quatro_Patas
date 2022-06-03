@@ -9,7 +9,7 @@ import lombok.Setter;
 @Builder(toBuilder = true)
 public class Pet {
 
-    private String externalId;
+    private String id;
     private String name;
     private Integer age;
     private String species;

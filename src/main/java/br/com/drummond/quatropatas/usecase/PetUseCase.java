@@ -15,10 +15,7 @@ public class PetUseCase {
     private final PetPort petPort;
 
     public void registration(Pet pet) {
-        var petWithExternalId = pet.toBuilder()
-                .externalId(buildExternalId())
-                .build();
-        petPort.register(petWithExternalId);
+          petPort.register(pet);
     }
 
     public List<Pet> getAllPets() {
@@ -33,7 +30,5 @@ public class PetUseCase {
         petPort.updatePet(externalId, pet);
     }
 
-    private String buildExternalId(){
-        return String.valueOf(Integer.valueOf((int) Math.floor(Math.random() * 10 + 1)));
-    }
+
 }
