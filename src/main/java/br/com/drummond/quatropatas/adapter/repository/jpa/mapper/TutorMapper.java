@@ -15,7 +15,7 @@ public class TutorMapper {
                 .cpf(tutor.getCpf())
                 .city(tutor.getCity())
                 .state(tutor.getState())
-                .email(tutor.getCity())
+                .email(tutor.getEmail())
                 .telephone(tutor.getTelephone())
                 .build();
     }

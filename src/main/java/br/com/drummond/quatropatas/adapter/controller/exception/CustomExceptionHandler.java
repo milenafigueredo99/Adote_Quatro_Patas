@@ -13,7 +13,7 @@ import java.util.List;
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler
+//    @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleException(Exception ex) {
         var apiErrorDTO = ApiErrorDto.builder()
                 .code("500")
@@ -37,5 +37,15 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
                         .build());
     }
 
-
+    @ExceptionHandler(UnregisteredTutor.class)
+    public  ResponseEntity<ErrorResponse> handleUnregisteredTutor(UnregisteredTutor ex){
+        var apiErrorDTO = ApiErrorDto.builder()
+                .code("")
+                .message(ex.getMessage())
+                .build();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponse.builder()
+                        .messages(List.of(apiErrorDTO))
+                        .build());
+    }
 }

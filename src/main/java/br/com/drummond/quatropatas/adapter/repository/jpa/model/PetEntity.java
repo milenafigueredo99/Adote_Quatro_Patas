@@ -18,9 +18,6 @@ public class PetEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "id_externo")
-    private String externalId;
-
     @Column(name ="nome")
     private String name;
 

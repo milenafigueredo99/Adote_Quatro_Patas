@@ -29,9 +29,9 @@ public class AdoptionGateway implements AdoptionPort {
     @Override
     public List<Pet> allAdoptedPetsByCpf(String cpf) {
         var tutor =  tutorRepository.exitsByCpf(cpf);
-        var petDB= tutor.get().getPets();
+        var pets= petRepository.findPetAdopted(tutor.get().getId());
 
-        return  petMapper.toDomain(petDB);
+        return  petMapper.toDomain(pets);
 
     }
 

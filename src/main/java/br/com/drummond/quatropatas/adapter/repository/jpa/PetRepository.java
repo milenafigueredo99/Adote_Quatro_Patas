@@ -11,11 +11,10 @@ import java.util.Optional;
 
 @Repository
 public interface PetRepository extends JpaRepository<PetEntity, Long> {
-
-    @Query("SELECT p FROM PetEntity p  WHERE p.externalId = ?1")
-    Optional<PetEntity> getPet(String externalId);
-
-
     @Query("SELECT p FROM PetEntity p  WHERE p.adopted = 0")
     List<PetEntity> findPetNotAdopted();
+
+    @Query("SELECT p FROM PetEntity p  WHERE p.tutor.id = ?1")
+    List<PetEntity> findPetAdopted(Long tutor_id);
+
 }

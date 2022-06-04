@@ -39,7 +39,7 @@ public class TutorRegisterMapper {
                 .name(tutor.getName())
                 .city(tutor.getCity())
                 .state(tutor.getState())
-                .email(tutor.getCity())
+                .email(tutor.getEmail())
                 .telephone(tutor.getTelephone())
                 .build();
     }

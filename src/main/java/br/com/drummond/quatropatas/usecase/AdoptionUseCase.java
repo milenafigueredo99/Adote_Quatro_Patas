@@ -29,6 +29,10 @@ public class AdoptionUseCase {
     }
 
     public List<Pet> allAdoptedPetsByCpf(String cpf) {
+        var tutor = tutorPort.findTutorByCpf(cpf);
+        if (tutor.isEmpty()) {
+            throw new UnregisteredTutor("Não existe tutor cadastrado com esse cpf");
+        }
         return adoptionPort.allAdoptedPetsByCpf(cpf);
     }
 }
