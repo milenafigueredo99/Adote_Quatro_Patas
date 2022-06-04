@@ -22,13 +22,14 @@ public class PetUseCase {
         return petPort.findAllPets();
     }
 
-    public void deleteRegister(String externalId) {
-        petPort.deletePetByExternalId(externalId);
+    public void deleteRegister(Long id) {
+        petPort.deletePetById(id);
     }
 
-    public void updateRegister(String externalId, Pet pet) {
-        petPort.updatePet(externalId, pet);
+    public void updateRegister(Long id, Pet pet) {
+        petPort.updatePet(id, pet);
     }
 
 
 }
+

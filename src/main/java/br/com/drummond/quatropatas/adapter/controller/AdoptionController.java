@@ -20,7 +20,7 @@ public class AdoptionController {
 
     @PostMapping
     public ResponseEntity<?> adoptionPet(@RequestBody AdoptionInput input) {
-        adoptionUseCase.adoptPet(input.getExternalId(), input.getCpf());
+        adoptionUseCase.adoptPet(input.getId(), input.getCpf());
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

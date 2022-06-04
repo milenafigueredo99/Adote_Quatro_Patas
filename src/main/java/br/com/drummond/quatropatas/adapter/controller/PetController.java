@@ -34,15 +34,15 @@ public class PetController {
 
 
     @PutMapping
-    private ResponseEntity<?> updatePet(@Valid @RequestBody PetInput input, @RequestParam("id_externo") String externalId) {
+    private ResponseEntity<?> updatePet(@Valid @RequestBody PetInput input, @RequestParam("id") Long id) {
         var pet = petRegisterMapper.toDomain(input);
-        petUseCase.updateRegister(externalId, pet);
+        petUseCase.updateRegister(id, pet);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping
-    private ResponseEntity<?> petRegister(@RequestParam(name = "id_externo") String externalId) {
-        petUseCase.deleteRegister(externalId);
+    private ResponseEntity<?> petRegister(@RequestParam(name = "id") Long id) {
+        petUseCase.deleteRegister(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

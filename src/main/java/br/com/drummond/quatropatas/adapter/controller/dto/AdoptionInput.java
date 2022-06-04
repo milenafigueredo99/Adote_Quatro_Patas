@@ -12,8 +12,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AdoptionInput {
 
-    @JsonProperty("id_pet")
-    private String externalId;
+    @JsonProperty("id")
+    private Long id;
 
     @JsonProperty("cpf")
     private String cpf;

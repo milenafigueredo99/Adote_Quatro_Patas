@@ -21,8 +21,8 @@ public class AdoptionGateway implements AdoptionPort {
     private final PetMapper petMapper;
 
     @Override
-    public void adoption(String externalId, TutorEntity tutorEntity) {
-        var pet = savePet(externalId, tutorEntity);
+    public void adoption(Long id, TutorEntity tutorEntity) {
+        var pet = savePet(id, tutorEntity);
         updateTutor(tutorEntity, pet);
     }
 
@@ -35,8 +35,8 @@ public class AdoptionGateway implements AdoptionPort {
 
     }
 
-    private PetEntity savePet(String externalId, TutorEntity tutorEntity) {
-        var pet = petRepository.getPet(externalId).get();
+    private PetEntity savePet(Long id, TutorEntity tutorEntity) {
+        var pet = petRepository.findById(id).get();
         pet.setAdopted(true);
         pet.setTutor(tutorEntity);
         petRepository.save(pet);

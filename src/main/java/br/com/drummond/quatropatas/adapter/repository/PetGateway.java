@@ -1,5 +1,6 @@
 package br.com.drummond.quatropatas.adapter.repository;
 
+import br.com.drummond.quatropatas.adapter.controller.exception.UnregisteredPetException;
 import br.com.drummond.quatropatas.adapter.repository.jpa.PetRepository;
 import br.com.drummond.quatropatas.adapter.repository.jpa.mapper.PetMapper;
 import br.com.drummond.quatropatas.usecase.port.PetPort;
@@ -32,15 +33,22 @@ public class PetGateway implements PetPort {
 
     @Override
     @Transactional
-    public void deletePetByExternalId(String externalId) {
-        petRepository.deleteByExternalId(externalId);
+    public void deletePetById(Long id) {
+        petRepository.deleteById(id);
     }
 
     @Override
-    public void updatePet(String externalId, Pet pet) {
-        var petDb = petRepository.getPet(externalId).get();
+    public void updatePet(Long externalId, Pet pet) {
+        var petDb = petRepository.findById(externalId).get();
         var updatedPet = petMapper.toUpdate(pet, petDb);
         petRepository.save(updatedPet);
+    }
+
+    @Override
+    public void existsById(Long id) {
+        if (petRepository.findById(id).isEmpty()){
+            throw new UnregisteredPetException("Não existe pet registrado com esse id");
+        }
     }
 
 }

@@ -6,7 +6,7 @@ import br.com.drummond.quatropatas.domain.Pet;
 import java.util.List;
 
 public interface AdoptionPort {
-      void adoption(String externalId, TutorEntity tutor);
+      void adoption(Long id, TutorEntity tutor);
       List<Pet> allAdoptedPetsByCpf(String cpf);
 
 }
