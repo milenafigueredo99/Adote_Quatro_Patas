@@ -4,6 +4,7 @@ import br.com.drummond.quatropatas.domain.Pet;
 import br.com.drummond.quatropatas.usecase.port.PetPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,6 +23,7 @@ public class PetUseCase {
         return petPort.findAllPets();
     }
 
+    @Transactional
     public void deleteRegister(Long id) {
         petPort.deletePetById(id);
     }

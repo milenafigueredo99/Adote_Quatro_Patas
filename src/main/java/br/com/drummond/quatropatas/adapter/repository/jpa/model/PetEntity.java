@@ -48,6 +48,7 @@ public class PetEntity {
     @Column(name ="adotado")
     private boolean adopted;
 
+
     @ManyToOne
     @JoinColumn(name = "tutor_id")
     private TutorEntity tutor;

@@ -37,7 +37,6 @@ public class TutorEntity {
     @Column(name = "telefone")
     private String telephone;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PetEntity> pets;
-
 }

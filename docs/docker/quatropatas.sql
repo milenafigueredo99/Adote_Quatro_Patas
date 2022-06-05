@@ -1,27 +1,30 @@
-DROP DATABASE quatropatas;
+DROP DATABASE if exists quatropatas;
 CREATE DATABASE quatropatas;
 use quatropatas;
 
- CREATE TABLE `pet` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `id_externo` VARCHAR(45) NULL,
-  `nome` VARCHAR(45) NULL,
-  `idade` INT NULL,
-  `especie` VARCHAR(45) NULL,
-  `genero` VARCHAR(45) NULL,
-  `peso` double NULL,
-  `porte` VARCHAR(45) NULL,
-  `cidade` VARCHAR(45) NULL,
-  `estado` VARCHAR(45) NULL,
-  `deficiencia` VARCHAR(3) NULL,
-  `adotado` boolean,
-  PRIMARY KEY (`id`));
-  
-   CREATE TABLE `tutor` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NULL,
-  `cpf` VARCHAR(45) NULL UNIQUE,
-  `endereco` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  `telefone` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`));
+CREATE TABLE tutor(
+    id integer PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45) NULL,
+    cpf VARCHAR(45) NULL UNIQUE,
+    cidade VARCHAR(45) NULL,
+    estado VARCHAR(45) NULL,
+    email VARCHAR(45) NULL,
+    telefone VARCHAR(45) NULL
+);
+
+CREATE TABLE pet(
+    id integer PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45) NULL,
+    idade INT NULL,
+    especie VARCHAR(45) NULL,
+    genero VARCHAR(45) NULL,
+    peso double NULL,
+    porte VARCHAR(45) NULL,
+    cidade VARCHAR(45) NULL,
+    estado VARCHAR(45) NULL,
+    deficiencia VARCHAR(3) NULL,
+    adotado boolean,
+    tutor_id integer,
+    CONSTRAINT fk_tutorPet FOREIGN KEY (tutor_id) REFERENCES tutor (id)
+    ON DELETE CASCADE
+);
