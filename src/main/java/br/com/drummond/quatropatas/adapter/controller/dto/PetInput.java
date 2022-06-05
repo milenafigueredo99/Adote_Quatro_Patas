@@ -16,7 +16,6 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class PetInput {
 
-
     @NotNull
     @JsonProperty("nome")
     private String name;
@@ -37,7 +36,7 @@ public class PetInput {
     private String size;
 
     @JsonProperty("peso")
-    private Double weight;
+    private String weight;
 
     @NotNull
     @JsonProperty("cidade")

@@ -28,7 +28,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UnregisteredPetException.class)
     public  ResponseEntity<ErrorResponse> handleUnregisteredPetException(UnregisteredPetException ex){
         var apiErrorDTO = ApiErrorDto.builder()
-                .code("")
+                .code(HttpStatus.BAD_REQUEST.name())
                 .message(ex.getMessage())
                 .build();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -40,7 +40,31 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UnregisteredTutor.class)
     public  ResponseEntity<ErrorResponse> handleUnregisteredTutor(UnregisteredTutor ex){
         var apiErrorDTO = ApiErrorDto.builder()
-                .code("")
+                .code(HttpStatus.BAD_REQUEST.name())
+                .message(ex.getMessage())
+                .build();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponse.builder()
+                        .messages(List.of(apiErrorDTO))
+                        .build());
+    }
+
+    @ExceptionHandler(DuplicateRegistrationException.class)
+    public  ResponseEntity<ErrorResponse> handleDuplicateRegistrationException(DuplicateRegistrationException ex){
+        var apiErrorDTO = ApiErrorDto.builder()
+                .code(HttpStatus.BAD_REQUEST.name())
+                .message(ex.getMessage())
+                .build();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponse.builder()
+                        .messages(List.of(apiErrorDTO))
+                        .build());
+    }
+
+    @ExceptionHandler(AdoptedPetException.class)
+    public  ResponseEntity<ErrorResponse> handleAdoptedPetException(AdoptedPetException ex){
+        var apiErrorDTO = ApiErrorDto.builder()
+                .code(HttpStatus.BAD_REQUEST.name())
                 .message(ex.getMessage())
                 .build();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)

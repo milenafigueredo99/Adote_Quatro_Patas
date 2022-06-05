@@ -18,7 +18,7 @@ CREATE TABLE pet(
     idade INT NULL,
     especie VARCHAR(45) NULL,
     genero VARCHAR(45) NULL,
-    peso double NULL,
+    peso VARCHAR(45) NULL,
     porte VARCHAR(45) NULL,
     cidade VARCHAR(45) NULL,
     estado VARCHAR(45) NULL,

@@ -34,7 +34,7 @@ public class PetEntity {
     private String size;
 
     @Column(name ="peso")
-    private double weight;
+    private String weight;
 
     @Column(name ="estado")
     private String state;

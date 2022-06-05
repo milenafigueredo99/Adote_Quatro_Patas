@@ -29,7 +29,7 @@ public class PetResponse {
     private String size;
 
     @JsonProperty("peso")
-    private double weight;
+    private String weight;
 
     @JsonProperty("cidade")
     private String city;
