@@ -11,6 +11,6 @@ public interface PetPort {
     void deletePetById(Long id);
     void updatePet(Long id, Pet pet);
 
-
     void existsById(Long id);
+    void adoptedPet(Long id);
 }

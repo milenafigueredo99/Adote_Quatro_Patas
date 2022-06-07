@@ -21,6 +21,7 @@ public class AdoptionUseCase {
 
         var tutor = tutorPort.findTutorByCpf(cpf);
         petPort.existsById(id);
+        petPort.adoptedPet(id);
 
         if (tutor.isEmpty()) {
             throw new UnregisteredTutor("Não existe tutor cadastrado com esse cpf");

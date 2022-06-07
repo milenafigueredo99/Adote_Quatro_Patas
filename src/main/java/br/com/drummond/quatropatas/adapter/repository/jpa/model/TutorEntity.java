@@ -1,6 +1,8 @@
 package br.com.drummond.quatropatas.adapter.repository.jpa.model;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -37,6 +39,6 @@ public class TutorEntity {
     @Column(name = "telefone")
     private String telephone;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<PetEntity> pets;
 }

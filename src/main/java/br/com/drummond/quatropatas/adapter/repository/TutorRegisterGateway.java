@@ -1,5 +1,7 @@
 package br.com.drummond.quatropatas.adapter.repository;
 
+import br.com.drummond.quatropatas.adapter.controller.exception.UnregisteredTutor;
+import br.com.drummond.quatropatas.adapter.repository.jpa.PetRepository;
 import br.com.drummond.quatropatas.adapter.repository.jpa.TutorRepository;
 import br.com.drummond.quatropatas.adapter.repository.jpa.mapper.TutorMapper;
 import br.com.drummond.quatropatas.adapter.repository.jpa.model.TutorEntity;
@@ -17,6 +19,7 @@ import java.util.Optional;
 public class TutorRegisterGateway implements TutorPort {
 
     private final TutorRepository tutorRepository;
+    private final PetRepository petRepository;
     private final TutorMapper tutorMapper;
 
     @Override
@@ -27,7 +30,7 @@ public class TutorRegisterGateway implements TutorPort {
 
     @Override
     public Optional<TutorEntity> findTutorByCpf(String cpf) {
-       return tutorRepository.exitsByCpf(cpf);
+        return tutorRepository.exitsByCpf(cpf);
     }
 
 
@@ -47,6 +50,16 @@ public class TutorRegisterGateway implements TutorPort {
     @Override
     @Transactional
     public void deleteByCpf(String cpf) {
+        var tutor = getTutor(cpf);
+        petRepository.deletePets(tutor.getId());
         tutorRepository.deleteByCpf(cpf);
+    }
+
+    private TutorEntity getTutor(String cpf){
+        var tutor = tutorRepository.exitsByCpf(cpf);
+         if( tutorRepository.exitsByCpf(cpf).isEmpty()) {
+             throw new UnregisteredTutor("Tutor não registrado");
+         }
+         return tutor.get();
     }
 }

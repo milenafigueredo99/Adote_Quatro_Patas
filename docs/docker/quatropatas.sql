@@ -1,4 +1,3 @@
-DROP DATABASE if exists quatropatas;
 CREATE DATABASE quatropatas;
 use quatropatas;
 
@@ -26,5 +25,4 @@ CREATE TABLE pet(
     adotado boolean,
     tutor_id integer,
     CONSTRAINT fk_tutorPet FOREIGN KEY (tutor_id) REFERENCES tutor (id)
-    ON DELETE CASCADE
-);
+    );

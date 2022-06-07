@@ -1,5 +1,6 @@
 package br.com.drummond.quatropatas.adapter.repository;
 
+import br.com.drummond.quatropatas.adapter.controller.exception.AdoptedPetException;
 import br.com.drummond.quatropatas.adapter.controller.exception.UnregisteredPetException;
 import br.com.drummond.quatropatas.adapter.repository.jpa.PetRepository;
 import br.com.drummond.quatropatas.adapter.repository.jpa.mapper.PetMapper;
@@ -48,6 +49,13 @@ public class PetGateway implements PetPort {
     public void existsById(Long id) {
         if (petRepository.findById(id).isEmpty()){
             throw new UnregisteredPetException("Não existe pet registrado com esse id");
+        }
+    }
+
+    @Override
+    public void adoptedPet(Long id) {
+        if (petRepository.isAdoptedPet(id)){
+            throw new AdoptedPetException("Esse pet já foi adotado");
         }
     }
 

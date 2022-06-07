@@ -17,4 +17,10 @@ public interface PetRepository extends JpaRepository<PetEntity, Long> {
     @Query("SELECT p FROM PetEntity p  WHERE p.tutor.id = ?1")
     List<PetEntity> findPetAdopted(Long tutor_id);
 
+    @Query("SELECT adopted FROM PetEntity p  WHERE p.id = ?1")
+    boolean isAdoptedPet(Long id);
+
+    @Modifying
+    @Query("DELETE FROM PetEntity p WHERE p.tutor.id = ?1")
+    void deletePets(Long idTutor);
 }
